@@ -1,0 +1,11 @@
+C:\Users\vandiesg\Source\Repos\core-angular-example\bin\Debug\netcoreapp2.0\core-angular-example.deps.json
+C:\Users\vandiesg\Source\Repos\core-angular-example\bin\Debug\netcoreapp2.0\core-angular-example.runtimeconfig.json
+C:\Users\vandiesg\Source\Repos\core-angular-example\bin\Debug\netcoreapp2.0\core-angular-example.runtimeconfig.dev.json
+C:\Users\vandiesg\Source\Repos\core-angular-example\bin\Debug\netcoreapp2.0\core-angular-example.dll
+C:\Users\vandiesg\Source\Repos\core-angular-example\bin\Debug\netcoreapp2.0\core-angular-example.pdb
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.csproj.CoreCompileInputs.cache
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.AssemblyInfoInputs.cache
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.AssemblyInfo.cs
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.dll
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.pdb
+C:\Users\vandiesg\Source\Repos\core-angular-example\obj\Debug\netcoreapp2.0\core-angular-example.csprojResolveAssemblyReference.cache
