@@ -8,10 +8,10 @@
     </PropertyGroup>
 
   <ItemGroup>   
-    <Compile Remove="core-angular-example-client\**" />
-    <Content Remove="core-angular-example-client\**" />
-    <EmbeddedResource Remove="core-angular-example-client\**" />
-    <None Remove="core-angular-example-client\**" />
+    <Compile Remove="client-src\**" />
+    <Content Remove="client-src\**" />
+    <EmbeddedResource Remove="client-src\**" />
+    <None Remove="client-src\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -21,6 +21,15 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
+   <Target Name="DebugRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
 
+    <Message Importance="high" Text="Performing ng build build..." />
+    <Exec Command="npm run-script build" />
+  </Target>
  
 </Project>

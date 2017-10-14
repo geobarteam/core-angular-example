@@ -48,10 +48,10 @@ namespace core_angular_example
             // Configure application for usage as API
             // with deafult route '/api/[Controller]'
             app.UseMvcWithDefaultRoute();
+            
             // Serve static files
             app.UseStaticFiles();
-            // Use index.html as default page
-            app.UseDefaultFiles();
+
         }
     }
 }

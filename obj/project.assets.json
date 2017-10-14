@@ -9594,10 +9594,12 @@
       ]
     },
     "System.Linq.Queryable/4.0.1": {
-      "sha512": "Yn/WfYe9RoRfmSLvUt2JerP0BTGGykCZkQPgojaxgzF2N0oPo+/AhB8TXOpdCcNlrG3VRtsamtK2uzsp3cqRVw==",
+      "sha512": "yHga+aoXSYvdob1pVFJQCwe9r1M/Jy4dmyO9lrFrzD7bmF/WAS/HpwL8JgKPIMEsmEGVrwyHo+44f2kKfMKQNA==",
       "type": "package",
       "path": "system.linq.queryable/4.0.1",
       "files": [
+        "System.Linq.Queryable.4.0.1.nupkg.sha512",
+        "System.Linq.Queryable.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/monoandroid10/_._",
@@ -9645,9 +9647,7 @@
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
         "ref/xamarintvos10/_._",
-        "ref/xamarinwatchos10/_._",
-        "system.linq.queryable.4.0.1.nupkg.sha512",
-        "system.linq.queryable.nuspec"
+        "ref/xamarinwatchos10/_._"
       ]
     },
     "System.Net.Http/4.3.0": {
@@ -12533,23 +12533,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vandiesg\\.nuget\\packages\\": {},
+    "C:\\Users\\gvd8\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\vandiesg\\Source\\Repos\\core-angular-example\\core-angular-example.csproj",
+      "projectUniqueName": "c:\\Dev\\core-angular-example\\core-angular-example.csproj",
       "projectName": "core-angular-example",
-      "projectPath": "C:\\Users\\vandiesg\\Source\\Repos\\core-angular-example\\core-angular-example.csproj",
-      "packagesPath": "C:\\Users\\vandiesg\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\vandiesg\\Source\\Repos\\core-angular-example\\obj\\",
+      "projectPath": "c:\\Dev\\core-angular-example\\core-angular-example.csproj",
+      "packagesPath": "C:\\Users\\gvd8\\.nuget\\packages\\",
+      "outputPath": "c:\\Dev\\core-angular-example\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\vandiesg\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\gvd8\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -12557,7 +12557,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://app.proget.fluxys.net/nuget/FluxysNuget/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
