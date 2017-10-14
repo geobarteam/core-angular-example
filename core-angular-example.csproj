@@ -35,9 +35,9 @@
     <Exec Command="npm run-script build" />
   </Target>
  
-   <Target Name="DebugRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+   <Target Name="ReleaseRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <CallTarget Targets="EnsureNode" />
-    <Message Importance="high" Text="Performing ng build build..." />
+    <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
  
