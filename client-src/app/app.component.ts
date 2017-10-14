@@ -7,6 +7,7 @@ import { Http } from '@angular/http'
 })
 export class AppComponent implements OnInit {
    constructor(private _httpService: Http) { }
+   title = "DotNet Core Angular Example";
    apiValues: string[] = [];
    ngOnInit() {
       this._httpService.get('/api/values').subscribe(values => {
