@@ -72,6 +72,7 @@ bld/
 msbuild.log
 msbuild.err
 msbuild.wrn
+obj\
 
 # Visual Studio 
 .vs/
