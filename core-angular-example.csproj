@@ -34,11 +34,12 @@
     <Message Importance="high" Text="Performing ng build for dev build..." />
     <Exec Command="npm run-script build" />
   </Target>
- 
-   <Target Name="ReleaseRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
     <CallTarget Targets="EnsureNode" />
+    <Message Importance="high" Text="Install packages..." />
+    <Exec Command="npm install" />
     <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
- 
 </Project>

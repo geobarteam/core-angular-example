@@ -12539,11 +12539,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Dev\\core-angular-example\\core-angular-example.csproj",
+      "projectUniqueName": "C:\\dev\\core-angular-example\\core-angular-example.csproj",
       "projectName": "core-angular-example",
-      "projectPath": "C:\\Dev\\core-angular-example\\core-angular-example.csproj",
+      "projectPath": "C:\\dev\\core-angular-example\\core-angular-example.csproj",
       "packagesPath": "C:\\Users\\gvd8\\.nuget\\packages\\",
-      "outputPath": "C:\\Dev\\core-angular-example\\obj\\",
+      "outputPath": "C:\\dev\\core-angular-example\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

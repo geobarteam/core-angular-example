@@ -5,31 +5,46 @@ dotnet new webapi
 
 # 2. Modify .csproj
     Since we will eventually have TypeScript files in our project, we should also disable any TypeScript compilation errors.
-    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+      <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+      <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+      <IsPackable>false</IsPackable>
 
 # 3. Modify Staryp.cs to use default route
     app.UseDefaultFiles();
     app.UseStaticFiles();
     
-    app.UseMvc(routes =>
-    {
-        routes.MapRoute(
-            name: "default",
-            template: "{controller=Home}/{action=Index}/{id?}");
-
-        routes.MapRoute(
-            name: "spa-fallback",
-            template: "{*url}",
-            defaults: new { controller = "Home", action = "Index" });
+    app.Use(async (context, next) => {
+        await next();
+        if (context.Response.StatusCode == 404 &&
+            !Path.HasExtension(context.Request.Path.Value) &&
+            !context.Request.Path.Value.StartsWith("/api/")) {
+                context.Request.Path = "/index.html";
+                await next();
+            }
     });
 
-# 4.  add angular app to your application
+    // Configure application for usage as API
+    // with deafult route '/api/[Controller]'
+    app.UseMvcWithDefaultRoute();
+    
+    // Serve static files
+    app.UseStaticFiles();
+
+# 4.  Add angular app to your application
     ng new core-angular-example-client 
+    copy all the files & folders inside core-angular-example-client to the root of your app
+    rename the src folder on the root by client-src
+    modify the .angular-cli.json on the root so that ng build get the sources from "client-src" and output the content inside the wwroot folder:
+     
+     "apps": [
+    {
+      "root": "client-src",
+      "outDir": "wwwroot",
 
 # 5. Enable  Http & Forms module
     Open your src/app/app.module.ts file and import the FormsModule and HttpModule
 
-# 6. add a proxy.conf.json to the root 
+# 6. Add a proxy.conf.json to the root 
     {
         "/api": {
             "target": "http://localhost:7834/",
@@ -37,25 +52,15 @@ dotnet new webapi
         }
     }
 
-# 7. modify package.json of angular app so that npm to run build scripts 
+# 7. Modify package.json of angular app so that npm run build scripts 
     "scripts": {
         "ng": "ng",
         "start": "ng serve --proxy-config proxy.conf.json",
-        "build": "ng build && xcopy dist\\*.* ..\\wwwroot\\ /s /e /Y",
-        "build-prd": "ng build --prod --env=prod && xcopy dist\\*.* ..\\wwwroot\\ /s /e /Y",
+        "build": "ng build",
+        "build-prd": "ng build --prod --env=prod",
 
-# 8. create a package.json that redirect npm commands to the angular app folder
-    {
-    "name": "core-angular-example",
-    "version": "0.0.0",
-    "license": "MIT",
-    "scripts": {
-        "ng": "ng",
-        "start": "cd core-angular-example-client && npm start",
-        "build": "cd core-angular-example-client && npm build",
-        "build-prd": "cd core-angular-example-client && npm build-prd"
-    }
-    }
+# 8. Modify the csproj file so that msbuild runs the ng build
+
 
 
 
