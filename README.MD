@@ -1,4 +1,4 @@
-This is an exampkle on how to host angular app using angular-cli inside a DotNet Core Web.api project
+This is an example on how to host angular app using angular-cli inside a DotNet Core Web.api project
 
 # 1. Configure ASP.NET Core
 dotnet new webapi
