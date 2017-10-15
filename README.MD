@@ -60,7 +60,24 @@ dotnet new webapi
         "build-prd": "ng build --prod --env=prod",
 
 # 8. Modify the csproj file so that msbuild runs the ng build
-
+   <Target Name="EnsureNode">
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+  </Target>
+  <Target Name="DebugRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' ">
+    <CallTarget Targets="EnsureNode" />
+    <Message Importance="high" Text="Performing ng build for dev build..." />
+    <Exec Command="npm run-script build" />
+  </Target>
+  <Target Name="ReleaseRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
+    <CallTarget Targets="EnsureNode" />
+    <Message Importance="high" Text="Install packages..." />
+    <Exec Command="npm install" />
+    <Message Importance="high" Text="Performing ng build for prd build..." />
+    <Exec Command="npm run-script build-prd" />
+  </Target>
 
 
 
