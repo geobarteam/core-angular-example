@@ -35,7 +35,7 @@
     <Exec Command="npm run-script build" />
   </Target>
 
-  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+  <Target Name="ReleaseRunNgBuild" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Release' ">
     <CallTarget Targets="EnsureNode" />
     <Message Importance="high" Text="Install packages..." />
     <Exec Command="npm install" />
