@@ -13,7 +13,7 @@ dotnet new webapi
 # 3. Modify Staryp.cs to use default route
     app.UseDefaultFiles();
     app.UseStaticFiles();
-    
+
     app.Use(async (context, next) => {
         await next();
         if (context.Response.StatusCode == 404 &&
@@ -27,7 +27,7 @@ dotnet new webapi
     // Configure application for usage as API
     // with deafult route '/api/[Controller]'
     app.UseMvcWithDefaultRoute();
-    
+
     // Serve static files
     app.UseStaticFiles();
 
@@ -38,15 +38,19 @@ dotnet new webapi
     rename the src folder on the root by client-src
     modify the .angular-cli.json on the root so that ng build  output the content inside the wwroot folder of the web-api project:
      
+
      "apps": [
     {
       "root": "src",
       "outDir": "../web-api/wwwroot",
 
-# 5. Enable  Http & Forms module
+# 5. Add wwwroot to the .gitignore file
+    wwwroot/
+
+# 6. Enable  Http & Forms module
     Open your src/app/app.module.ts file and import the FormsModule and HttpModule
 
-# 6. Add a proxy.conf.json to the root 
+# 7. Add a proxy.conf.json to the root
     {
         "/api": {
             "target": "http://localhost:7834/",
@@ -54,14 +58,14 @@ dotnet new webapi
         }
     }
 
-# 7. Modify package.json of angular app so that npm run build scripts 
+# 8. Modify package.json of angular app so that npm run build scripts
     "scripts": {
         "ng": "ng",
         "start": "ng serve --proxy-config proxy.conf.json",
         "build": "ng build",
         "build-prd": "ng build --prod --env=prod",
 
-# 8. Modify the csproj file so that msbuild runs the ng build
+# 9. Modify the csproj file so that msbuild runs the ng build
    <Target Name="EnsureNode">
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
@@ -80,17 +84,3 @@ dotnet new webapi
     <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
