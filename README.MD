@@ -80,7 +80,7 @@ dotnet new webapi
     }   
 
 ## 10. Modify the csproj file so that msbuild runs the ng build
-...
+```
    <Target Name="EnsureNode">
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
@@ -99,6 +99,6 @@ dotnet new webapi
     <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
-...
+```
 
 
