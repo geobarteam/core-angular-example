@@ -1,16 +1,17 @@
-This is an example on how to host angular app using angular-cli inside a DotNet Core Web.api project
+# Angular inside DotNet Core
+This is an example on how to host angular app using angular-cli inside a DotNet Core web.api project
 
-# 1. Configure ASP.NET Core
+## 1. Configure ASP.NET Core
 from th root of your project:
 dotnet new webapi
 
-# 2. Modify .csproj
+## 2. Modify .csproj
     Since we will eventually have TypeScript files in our project, we should also disable any TypeScript compilation errors.
       <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
       <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
       <IsPackable>false</IsPackable>
 
-# 3. Modify Staryp.cs to use default route
+## 3. Modify Staryp.cs to use default route
     app.UseDefaultFiles();
     app.UseStaticFiles();
 
@@ -31,7 +32,7 @@ dotnet new webapi
     // Serve static files
     app.UseStaticFiles();
 
-# 4.  Add angular app to your application
+## 4.  Add angular app to your application
     from the root of your project:
     ng new angular-app
     copy all the files & folders inside core-angular-example-client to the root of your app
@@ -44,13 +45,13 @@ dotnet new webapi
       "root": "src",
       "outDir": "../web-api/wwwroot",
 
-# 5. Add wwwroot to the .gitignore file
+## 5. Add wwwroot to the .gitignore file
     wwwroot/
 
-# 6. Enable  Http & Forms module
+## 6. Enable  Http & Forms module
     Open your src/app/app.module.ts file and import the FormsModule and HttpModule
 
-# 7. Add a proxy.conf.json to the root
+## 7. Add a proxy.conf.json to the root
     {
         "/api": {
             "target": "http://localhost:7834/",
@@ -58,14 +59,14 @@ dotnet new webapi
         }
     }
 
-# 8. Modify package.json of angular app so that npm run build scripts
+## 8. Modify package.json of angular app so that npm run build scripts
     "scripts": {
         "ng": "ng",
         "start": "ng serve --proxy-config proxy.conf.json",
         "build": "ng build",
         "build-prd": "ng build --prod --env=prod",
 
-# 9. Create a project.json in web-api that redirects commands to your angular-app so that msbuild can run the npm commands
+## 9. Create a project.json in web-api that redirects commands to your angular-app so that msbuild can run the npm commands
     {
     "name": "core-angular-example",
     "version": "0.0.0",
@@ -78,7 +79,8 @@ dotnet new webapi
         }
     }   
 
-# 10. Modify the csproj file so that msbuild runs the ng build
+## 10. Modify the csproj file so that msbuild runs the ng build
+...
    <Target Name="EnsureNode">
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
@@ -97,6 +99,6 @@ dotnet new webapi
     <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
+...
 
-# end
 
