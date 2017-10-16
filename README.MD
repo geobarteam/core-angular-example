@@ -1,6 +1,7 @@
 This is an example on how to host angular app using angular-cli inside a DotNet Core Web.api project
 
 # 1. Configure ASP.NET Core
+from th root of your project:
 dotnet new webapi
 
 # 2. Modify .csproj
@@ -31,15 +32,16 @@ dotnet new webapi
     app.UseStaticFiles();
 
 # 4.  Add angular app to your application
-    ng new core-angular-example-client 
+    from the root of your project:
+    ng new angular-app
     copy all the files & folders inside core-angular-example-client to the root of your app
     rename the src folder on the root by client-src
-    modify the .angular-cli.json on the root so that ng build get the sources from "client-src" and output the content inside the wwroot folder:
+    modify the .angular-cli.json on the root so that ng build  output the content inside the wwroot folder of the web-api project:
      
      "apps": [
     {
-      "root": "client-src",
-      "outDir": "wwwroot",
+      "root": "src",
+      "outDir": "../web-api/wwwroot",
 
 # 5. Enable  Http & Forms module
     Open your src/app/app.module.ts file and import the FormsModule and HttpModule

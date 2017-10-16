@@ -1,0 +1,11 @@
+{
+    "name": "core-angular-example",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "install": "cd ../angular-app & npm install",
+        "start": "cd ../angular-app & npm start",
+        "build": "cd ../angular-app & npm run-script build",
+        "build-prd": "cd ../angular-app & npm run-script build-prd"
+    }
+}
