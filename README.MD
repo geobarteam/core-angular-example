@@ -65,7 +65,20 @@ dotnet new webapi
         "build": "ng build",
         "build-prd": "ng build --prod --env=prod",
 
-# 9. Modify the csproj file so that msbuild runs the ng build
+# 9. Create a project.json in web-api that redirects commands to your angular-app so that msbuild can run the npm commands
+    {
+    "name": "core-angular-example",
+    "version": "0.0.0",
+    "license": "MIT",
+    "scripts": {
+        "install": "cd ../angular-app & npm install",
+        "start": "cd ../angular-app & npm start",
+        "build": "cd ../angular-app & npm run-script build",
+        "build-prd": "cd ../angular-app & npm run-script build-prd"
+        }
+    }   
+
+# 10. Modify the csproj file so that msbuild runs the ng build
    <Target Name="EnsureNode">
     <Exec Command="node --version" ContinueOnError="true">
       <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
@@ -84,3 +97,6 @@ dotnet new webapi
     <Message Importance="high" Text="Performing ng build for prd build..." />
     <Exec Command="npm run-script build-prd" />
   </Target>
+
+# end
+
